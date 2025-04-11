@@ -5,84 +5,103 @@
  */
 package dao;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.HibernateException;
+import util.HibernateUtil;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 
-public abstract class AbstractDao<T> {
-    private final EntityManagerFactory emf;
+public abstract class AbstractDao<T> implements IDao<T> {
+
     private final Class<T> entityClass;
-    
+
     public AbstractDao(Class<T> entityClass) {
-        this.emf = Persistence.createEntityManagerFactory("ExpenseManagerPU");
         this.entityClass = entityClass;
     }
-    
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
+
+    @Override
+    public boolean create(T o) {
+        return executeTransaction(session -> session.save(o));
     }
-    
-    public void create(T entity) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(entity);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
+
+    @Override
+    public boolean delete(T o) {
+        return executeTransaction(session -> session.delete(o));
     }
-    
-    public void update(T entity) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.merge(entity);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
+
+    @Override
+    public boolean update(T o) {
+        return executeTransaction(session -> session.update(o));
     }
-    
-    public void delete(T entity) {
-        EntityManager em = getEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.remove(em.merge(entity));
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-    }
-    
-    public T findById(Object id) {
-        EntityManager em = getEntityManager();
-        try {
-            return em.find(entityClass, id);
-        } finally {
-            em.close();
-        }
-    }
-    
+
+    @Override
     public List<T> findAll() {
-        EntityManager em = getEntityManager();
+        Session session = null;
+        Transaction tx = null;
+        List<T> list = null;
         try {
-            Query q = em.createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e");
-            return q.getResultList();
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            list = session.createQuery("from " + entityClass.getSimpleName()).list();
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
         } finally {
-            em.close();
+            if (session != null) {
+                session.close();
+            }
         }
+        return list;
     }
-    
-    public int count() {
-        EntityManager em = getEntityManager();
+
+    public T findById(int id) {
+        Session session = null;
+        Transaction tx = null;
+        T entity = null;
         try {
-            Query q = em.createQuery("SELECT COUNT(e) FROM " + entityClass.getSimpleName() + " e");
-            return ((Long) q.getSingleResult()).intValue();
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            entity = (T) session.get(entityClass, id);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
         } finally {
-            em.close();
+            if (session != null) {
+                session.close();
+            }
         }
+        return entity;
+    }
+
+    private boolean executeTransaction(HibernateOperation<T> operation) {
+        Session session = null;
+        Transaction tx = null;
+        boolean status = false;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            operation.execute(session);
+            tx.commit();
+            status = true;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return status;
+    }
+
+    @FunctionalInterface
+    private interface HibernateOperation<T> {
+
+        void execute(Session session);
     }
 }
