@@ -15,21 +15,21 @@ import util.HibernateUtil;
  */
 public class Test {
     public static void main(String[] args) {
-        // Initialize Hibernate session
+
         HibernateUtil.getSessionFactory();
         
-        // Initialize DAOs
+
         UserDao userDao = new UserDao();
         DepenseDao depenseDao = new DepenseDao();
         CategorieDepenseDao categorieDao = new CategorieDepenseDao();
 
-        // Create users
+        
         User user1 = new User("Asmaa", "asmaa@example.com", "password123");
         User user2 = new User("Karim", "karim@example.com", "password456");
         userDao.create(user1);
         userDao.create(user2);
         
-        // Create expense categories
+       
         CategorieDepense categorie1 = new CategorieDepense("Alimentation");
         CategorieDepense categorie2 = new CategorieDepense("Transport");
         CategorieDepense categorie3 = new CategorieDepense("Loisirs");
@@ -37,7 +37,7 @@ public class Test {
         categorieDao.create(categorie2);
         categorieDao.create(categorie3);
 
-        // Create expenses
+       
         Depense depense1 = new Depense();
         depense1.setMontant(85.50);
         depense1.setDescription("Courses hebdomadaires");
@@ -71,7 +71,7 @@ public class Test {
         depenseDao.create(depense3);
         depenseDao.create(depense4);
 
-        // Display all expenses
+      
         System.out.println("\nToutes les dépenses :");
         for (Depense depense : depenseDao.findAll()) {
             System.out.println("Description : " + depense.getDescription() + 
@@ -81,7 +81,7 @@ public class Test {
                              ", Date : " + depense.getDate());
         }
 
-        // Display expenses for a specific user
+      
         System.out.println("\nDépenses de l'utilisateur Asmaa :");
         for (Depense depense : depenseDao.findAll()) {
             if (depense.getUser().getId() == user1.getId()) {
@@ -92,7 +92,7 @@ public class Test {
             }
         }
 
-        // Display expenses for a specific category
+      
         System.out.println("\nDépenses dans la catégorie Alimentation :");
         for (Depense depense : depenseDao.findAll()) {
             if (depense.getCategorie().getId() == categorie1.getId()) {
@@ -103,7 +103,7 @@ public class Test {
             }
         }
 
-        // Calculate total expenses by user
+    
         System.out.println("\nTotal des dépenses par utilisateur :");
         
         double totalUser1 = 0;
@@ -122,7 +122,7 @@ public class Test {
         }
         System.out.println("Karim : " + totalUser2 + " €");
         
-        // Calculate total expenses by category
+  
         System.out.println("\nTotal des dépenses par catégorie :");
         
         double totalCategorie1 = 0;
@@ -149,7 +149,7 @@ public class Test {
         }
         System.out.println("Loisirs : " + totalCategorie3 + " €");
         
-        // Close the session factory
+        
         HibernateUtil.getSessionFactory().close();
     }
 }
