@@ -36,3 +36,28 @@ Le système de gestion des dépenses personnelles vise à :
 
 ## 🧩 Diagramme de classe :
 <img width="356" alt="image" src="https://github.com/user-attachments/assets/9e329a07-54ac-450d-8f1c-7acc575d2270" />
+
+## 🔵 Modèle conceptuel de la base de donnée :
+<img width="635" alt="image" src="https://github.com/user-attachments/assets/92eb6b99-ce3b-4673-b0aa-0d7eedd3b50b" />
+
+## 🌐 Execution des tests dans la console :
+ ### • création des tables 
+ <img width="259" alt="image" src="https://github.com/user-attachments/assets/0e01fe65-86c1-4890-8e80-cc9784a63ebc" />
+ <img width="249" alt="image" src="https://github.com/user-attachments/assets/f3bab01b-712d-4b86-8f72-985b63e29c3e" />
+
+ ### • Insertion des données 
+ <img width="296" alt="image" src="https://github.com/user-attachments/assets/837b1519-d179-42c3-8e0b-4319ba7207c4" />
+ <img width="368" alt="image" src="https://github.com/user-attachments/assets/173d5f4d-8e9e-4f49-99f5-669235e91a91" />
+
+ ### • Filtrage 
+ <img width="269" alt="image" src="https://github.com/user-attachments/assets/793b1a74-3856-427d-baf5-1a32c3860c4a" />
+ <img width="298" alt="image" src="https://github.com/user-attachments/assets/482671dc-bdd8-46a8-9c18-02409983f4ae" />
+ <img width="283" alt="image" src="https://github.com/user-attachments/assets/1490d2e2-70ad-4dd7-b66d-dc23fae6af46" />
+
+
+
+
+
+
+
+
