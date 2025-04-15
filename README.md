@@ -35,7 +35,8 @@ Le système de gestion des dépenses personnelles vise à :
 -> Améliorer l'expérience utilisateur grâce à l'ajout dynamique des dépenses via AJAX.
 
 ## 🧩 Diagramme de classe :
-<img width="356" alt="image" src="https://github.com/user-attachments/assets/9e329a07-54ac-450d-8f1c-7acc575d2270" />
+![WhatsApp Image 2025-04-13 à 22 59 23_f6ecc72e](https://github.com/user-attachments/assets/553e9f6c-bd85-4bbf-8ef5-3f7d18faf11e)
+
 
 ## 🔵 Modèle conceptuel de la base de donnée :
 <img width="635" alt="image" src="https://github.com/user-attachments/assets/92eb6b99-ce3b-4673-b0aa-0d7eedd3b50b" />
