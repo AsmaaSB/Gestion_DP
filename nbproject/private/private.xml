@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/BudgetMensuelDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/util/HibernateUtil.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/UserDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/User.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/CategorieDepenseDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/Depense.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/config/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/BudgetMensuel.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/AbstractDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/test/Test.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/CategorieDepense.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/DepenseDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/IDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/util/Test.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/index.html</file>
+        </group>
+    </open-files>
+</project-private>
