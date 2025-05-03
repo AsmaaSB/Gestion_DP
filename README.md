@@ -39,7 +39,8 @@ Le système de gestion des dépenses personnelles vise à :
 
 
 ## 🔵 Modèle conceptuel de la base de donnée :
-<img width="635" alt="image" src="https://github.com/user-attachments/assets/92eb6b99-ce3b-4673-b0aa-0d7eedd3b50b" />
+<img width="635" alt="image" src="https://github.com/user-attachments/assets/a08fe8fb-128b-40bd-8901-7338c15c4704" />
+
 
 ## 🌐 Execution des tests dans la console :
  ### • création des tables 
@@ -57,8 +58,6 @@ Le système de gestion des dépenses personnelles vise à :
 
 
 
+# Demo Video :
 
-
-
-
-
+https://github.com/user-attachments/assets/963a65af-cbf7-4206-9f25-60e49a20b16e
