@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.HibernateException;
 import util.HibernateUtil;
+
 import java.util.List;
 
 public abstract class AbstractDao<T> implements IDao<T> {
@@ -36,43 +31,28 @@ public abstract class AbstractDao<T> implements IDao<T> {
 
     @Override
     public List<T> findAll() {
-        Session session = null;
-        Transaction tx = null;
-        List<T> list = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<T> result = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
-            list = session.createQuery("from " + entityClass.getSimpleName()).list();
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
+            result = session.createQuery("FROM " + entityClass.getSimpleName()).list();
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            session.close();
         }
-        return list;
+        return result;
     }
 
+    @Override
     public T findById(int id) {
-        Session session = null;
-        Transaction tx = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
         T entity = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            tx = session.beginTransaction();
             entity = (T) session.get(entityClass, id);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            session.close();
         }
         return entity;
     }
@@ -80,28 +60,26 @@ public abstract class AbstractDao<T> implements IDao<T> {
     private boolean executeTransaction(HibernateOperation<T> operation) {
         Session session = null;
         Transaction tx = null;
-        boolean status = false;
+        boolean success = false;
+
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tx = session.beginTransaction();
             operation.execute(session);
             tx.commit();
-            status = true;
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
+            success = true;
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            if (session != null) session.close();
         }
-        return status;
+
+        return success;
     }
 
     @FunctionalInterface
     private interface HibernateOperation<T> {
-
         void execute(Session session);
     }
 }

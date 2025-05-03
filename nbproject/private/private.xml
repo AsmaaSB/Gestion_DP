@@ -3,20 +3,43 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/dashbord.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/DashboardController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/User.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/CategorieDepenseDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/client/profile-edit.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/services/IService.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/depenses/ajouter.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/UserController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/AbstractDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/ProfileController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/AdminDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/StatistiqueController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/client/profile.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/IDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/includes/header.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/includes/footer.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/services/StatistiqueService.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/BudgetMensuelDao.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/util/HibernateUtil.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/UserDao.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/User.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/CategorieDepenseDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/services/UserService.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/Depense.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/DepenseController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/Admin.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/depenses/liste.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/config/hibernate.cfg.xml</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/login.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/BudgetMensuel.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/AbstractDao.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/test/Test.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/statistiques/categories.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/budget/budget-form.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/CategorieDepense.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/DepenseDao.java</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/IDao.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/util/Test.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/Client.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/index.html</file>
         </group>
     </open-files>
