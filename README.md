@@ -58,8 +58,6 @@ Le système de gestion des dépenses personnelles vise à :
 
 
 
+# Demo Video :
 
-
-
-
-
+https://github.com/user-attachments/assets/963a65af-cbf7-4206-9f25-60e49a20b16e
