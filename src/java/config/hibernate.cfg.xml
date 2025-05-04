@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <!-- Database connection settings for MySQL 5.1.x connector -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gestion_dp?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
-
+ 
+        
+        <!-- JDBC connection pool settings -->
+        <property name="hibernate.connection.pool_size">10</property>
+        
+        <!-- SQL dialect for MySQL 5.x -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- Echo all executed SQL to stdout -->
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
-
-
-        <!-- Your mapped entities -->
+        
+        <!-- Drop and re-create the database schema on startup (be careful, use "update" for production) -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- Names the annotated entity classes -->
+        <mapping class="entities.BudgetMensuel"/>
+        <mapping class="entities.Depense"/>
+        <mapping class="entities.CategorieDepense"/>
         <mapping class="entities.User"/>
         <mapping class="entities.Admin"/>
         <mapping class="entities.Client"/>
-        <mapping class="entities.Depense"/>
-        <mapping class="entities.CategorieDepense"/>
-        <mapping class="entities.BudgetMensuel"/>
+        <!-- Add any other entity classes here -->
     </session-factory>
 </hibernate-configuration>

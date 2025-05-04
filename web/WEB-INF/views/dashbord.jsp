@@ -245,7 +245,7 @@
                 const ctx = document.getElementById('depensesChart').getContext('2d');
                         // Get labels and data from the server
                         const labels = [
-            <c:forEach items="${pieChartData.labels}" var="label" varStatus="status">
+            <c:forEach items="${pieChartLabels}" var="label" varStatus="status">
                         "${label}"${!status.last ? ',' : ''}
             </c:forEach>
                         ];
@@ -255,7 +255,7 @@
             </c:forEach>
                         ];
                         // Generate random colors
-                        const backgroundColors = labels.map(() = > {
+                        const backgroundColors = labels.map(() => {
                         const r = Math.floor(Math.random() * 255);
                                 const g = Math.floor(Math.random() * 255);
                                 const b = Math.floor(Math.random() * 255);

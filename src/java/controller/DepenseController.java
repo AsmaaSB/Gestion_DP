@@ -30,7 +30,7 @@ public class DepenseController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String path = request.getServletPath();
+        String path = request.getRequestURI().substring(request.getContextPath().length());
         HttpSession session = request.getSession(false);
 
         if (!isAuthenticatedClient(request, session, response)) return;
@@ -65,7 +65,7 @@ public class DepenseController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String path = request.getServletPath();
+        String path = request.getRequestURI().substring(request.getContextPath().length());
         HttpSession session = request.getSession(false);
 
         if (!isAuthenticatedClient(request, session, response)) return;

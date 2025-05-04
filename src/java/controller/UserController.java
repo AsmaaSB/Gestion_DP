@@ -10,6 +10,7 @@ import entities.Client;
 import entities.User;
 import services.UserService;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,9 +41,21 @@ public class UserController extends HttpServlet {
             throws ServletException, IOException {
 
         String path = request.getServletPath();
-        HttpSession session = request.getSession(false);
 
-        // Check authentication
+        // For registration, no authentication needed
+        if (path.equals("/register")) {
+            // First check if the register.jsp exists in both possible locations
+            String registerJspPath = "/WEB-INF/views/register.jsp";
+            if (getServletContext().getResourceAsStream(registerJspPath) == null) {
+                registerJspPath = "/WEB-INF/register.jsp";
+            }
+
+            request.getRequestDispatcher(registerJspPath).forward(request, response);
+            return;
+        }
+
+        // Check authentication for other paths
+        HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/login");
             return;
@@ -52,22 +65,6 @@ public class UserController extends HttpServlet {
         String userRole = (String) session.getAttribute("userRole");
 
         switch (path) {
-            case "/admin/dashboard":
-                if (!"admin".equals(userRole)) {
-                    response.sendError(HttpServletResponse.SC_FORBIDDEN);
-                    return;
-                }
-                request.getRequestDispatcher("/WEB-INF/admin/dashboard.jsp").forward(request, response);
-                break;
-
-            case "/client/dashboard":
-                if (!"client".equals(userRole)) {
-                    response.sendError(HttpServletResponse.SC_FORBIDDEN);
-                    return;
-                }
-                request.getRequestDispatcher("/WEB-INF/client/dashboard.jsp").forward(request, response);
-                break;
-
             case "/admin/users":
                 if (!"admin".equals(userRole)) {
                     response.sendError(HttpServletResponse.SC_FORBIDDEN);
@@ -86,13 +83,14 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/admin/clients.jsp").forward(request, response);
                 break;
 
-            case "/register":
-                request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
-                break;
-
             case "/profile":
                 request.setAttribute("user", currentUser);
-                request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+                // Try both possible profile JSP locations
+                String profileJspPath = "/WEB-INF/views/profile.jsp";
+                if (getServletContext().getResourceAsStream(profileJspPath) == null) {
+                    profileJspPath = "/WEB-INF/profile.jsp";
+                }
+                request.getRequestDispatcher(profileJspPath).forward(request, response);
                 break;
 
             default:
@@ -129,15 +127,56 @@ public class UserController extends HttpServlet {
         String telephone = request.getParameter("telephone");
         String adresse = request.getParameter("adresse");
 
+        // Check if user with this email already exists
+        List<User> existingUsers = userService.findAll();
+        for (User user : existingUsers) {
+            if (user.getEmail().equals(email)) {
+                request.setAttribute("error", "Un compte avec cet email existe déjà.");
+
+                // Create a client object to populate form fields
+                Client client = new Client(nom, email, "");
+                client.setTelephone(telephone);
+                client.setAdresse(adresse);
+                request.setAttribute("user", client);
+
+                // Determine the correct JSP path
+                String registerJspPath = "/WEB-INF/views/register.jsp";
+                if (getServletContext().getResourceAsStream(registerJspPath) == null) {
+                    registerJspPath = "/WEB-INF/register.jsp";
+                }
+                request.getRequestDispatcher(registerJspPath).forward(request, response);
+                return;
+            }
+        }
+
+        // Create new client
         Client client = new Client(nom, email, password);
+        client.setTelephone(telephone);
+        client.setAdresse(adresse);
+
+        System.out.println("Attempting to register: " + nom + " with email: " + email);
 
         if (userService.create(client)) {
+            System.out.println("Registration successful for: " + email);
             request.setAttribute("success", "Inscription réussie. Veuillez vous connecter.");
-            request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+
+            // Find the correct login.jsp path
+            String loginJspPath = "/WEB-INF/views/login.jsp";
+            if (getServletContext().getResourceAsStream(loginJspPath) == null) {
+                loginJspPath = "/WEB-INF/login.jsp";
+            }
+            request.getRequestDispatcher(loginJspPath).forward(request, response);
         } else {
+            System.out.println("Registration failed for: " + email);
             request.setAttribute("error", "Erreur lors de l'inscription. Veuillez réessayer.");
             request.setAttribute("user", client);
-            request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+
+            // Find the correct register.jsp path
+            String registerJspPath = "/WEB-INF/views/register.jsp";
+            if (getServletContext().getResourceAsStream(registerJspPath) == null) {
+                registerJspPath = "/WEB-INF/register.jsp";
+            }
+            request.getRequestDispatcher(registerJspPath).forward(request, response);
         }
     }
 
@@ -151,7 +190,6 @@ public class UserController extends HttpServlet {
         }
 
         User currentUser = (User) session.getAttribute("user");
-        int userId = currentUser.getId();
 
         String nom = request.getParameter("nom");
         String email = request.getParameter("email");
@@ -168,6 +206,8 @@ public class UserController extends HttpServlet {
             Client client = (Client) currentUser;
             String telephone = request.getParameter("telephone");
             String adresse = request.getParameter("adresse");
+            client.setTelephone(telephone);
+            client.setAdresse(adresse);
         }
 
         if (userService.update(currentUser)) {
@@ -179,6 +219,12 @@ public class UserController extends HttpServlet {
         }
 
         request.setAttribute("user", currentUser);
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+
+        // Find the correct profile.jsp path
+        String profileJspPath = "/WEB-INF/views/profile.jsp";
+        if (getServletContext().getResourceAsStream(profileJspPath) == null) {
+            profileJspPath = "/WEB-INF/profile.jsp";
+        }
+        request.getRequestDispatcher(profileJspPath).forward(request, response);
     }
 }

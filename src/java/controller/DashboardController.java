@@ -46,7 +46,7 @@ public class DashboardController extends HttpServlet {
 
         // Get budget for current month
         BudgetMensuel budgetMensuel = budgetService.findByMonthAndYear(currentUser, currentMonth, currentYear);
-        
+
         if (budgetMensuel == null) {
             // Create an empty budget object for display purposes
             budgetMensuel = new BudgetMensuel();
@@ -69,7 +69,7 @@ public class DashboardController extends HttpServlet {
         // Get recent expenses (last 5)
         List<Depense> dernieresDepenses = depenseService.findByUser(currentUser);
         dernieresDepenses.sort((d1, d2) -> d2.getDate().compareTo(d1.getDate())); // Sort by date descending
-        
+
         // Limit to 5 most recent expenses
         int maxExpenses = Math.min(5, dernieresDepenses.size());
         dernieresDepenses = dernieresDepenses.subList(0, maxExpenses);
@@ -78,6 +78,12 @@ public class DashboardController extends HttpServlet {
         Map<String, Object> pieChartData = statistiqueService.getPieChartData(currentUser, currentMonth, currentYear);
         List<Map<String, Object>> topCategories = statistiqueService.getTopCategories(currentUser, currentMonth, currentYear, 5);
 
+        List<String> labels = (List<String>) pieChartData.get("labels");
+        List<Double> data = (List<Double>) pieChartData.get("data");
+
+
+        request.setAttribute("pieChartLabels", labels);
+        request.setAttribute("pieChartDataValues", data);
         // Add data to request
         request.setAttribute("budgetMensuel", budgetMensuel);
         request.setAttribute("totalMois", totalMois);

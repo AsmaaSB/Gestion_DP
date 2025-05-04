@@ -18,6 +18,7 @@
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/controller/StatistiqueController.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/client/profile.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/IDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/register.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/includes/header.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/includes/footer.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/services/StatistiqueService.java</file>
@@ -38,6 +39,7 @@
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/WEB-INF/views/budget/budget-form.jsp</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/CategorieDepense.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/dao/DepenseDao.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/services/CategorieService.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/util/Test.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/src/java/entities/Client.java</file>
             <file>file:/C:/Users/PC/Documents/NetBeansProjects/Gestion_dp/web/index.html</file>

@@ -17,12 +17,37 @@ import javax.persistence.Table;
 @Table(name = "clients")
 @DiscriminatorValue("CLIENT")
 public class Client extends User {
-    
+
+    private String telephone;
+    private String adresse;
+
     public Client() {
         super();
     }
-    
+
     public Client(String nom, String email, String motDePasse) {
         super(nom, email, motDePasse);
+    }
+
+    public Client(String nom, String email, String motDePasse, String telephone, String adresse) {
+        super(nom, email, motDePasse);
+        this.telephone = telephone;
+        this.adresse = adresse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 }

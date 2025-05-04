@@ -52,11 +52,12 @@ public class LoginController extends HttpServlet {
             return;
         }
 
-        // Use the correct path to your login.jsp file
-        // If login.jsp is in root Web Pages directory:
-        request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-        // If login.jsp is in WEB-INF directory:
-        // request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        // Find the correct login.jsp path
+        String loginJspPath = "/WEB-INF/views/login.jsp";
+        if (getServletContext().getResourceAsStream(loginJspPath) == null) {
+            loginJspPath = "/WEB-INF/login.jsp";
+        }
+        request.getRequestDispatcher(loginJspPath).forward(request, response);
     }
 
     @Override
@@ -95,7 +96,12 @@ public class LoginController extends HttpServlet {
             System.out.println("Authentication failed for email: " + email); // Debug info
             request.setAttribute("error", "Email ou mot de passe incorrect");
 
-            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            // Find the correct login.jsp path
+            String loginJspPath = "/WEB-INF/views/login.jsp";
+            if (getServletContext().getResourceAsStream(loginJspPath) == null) {
+                loginJspPath = "/WEB-INF/login.jsp";
+            }
+            request.getRequestDispatcher(loginJspPath).forward(request, response);
         }
     }
 
